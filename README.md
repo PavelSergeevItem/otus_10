@@ -16,21 +16,22 @@
 
 1. Рабочий стенд для выполнения занадания физическая машина с Ubuntu 22.04, в ней виртаульная машина виртуал бокс, развернутая через Vagrant.
 2. Поготовка рабочего стенда, проверил наличие и версию Python, установил и проверил версию Ansible.
-```spa@stnd:~/Ass$ python3 --version
-   Python 3.10.6
-   spa@stnd:~/Ass$ ansible --version
-   ansible [core 2.14.6]
-   config file = /home/spa/Ass/ansible.cfg
-   configured module search path = ['/home/spa/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
-   ansible python module location = /usr/lib/python3/dist-packages/ansible
-   ansible collection location = /home/spa/.ansible/collections:/usr/share/ansible/collections
-   executable location = /usr/bin/ansible
-   python version = 3.10.6 (main, Mar 10 2023, 10:55:28) [GCC 11.3.0] (/usr/bin/python3)
-   jinja version = 3.0.3
-   libyaml = True 
+```	spa@stnd:~/Ass$ python3 --version
+  	Python 3.10.6
+   	spa@stnd:~/Ass$ ansible --version
+   	ansible [core 2.14.6]
+   	config file = /home/spa/Ass/ansible.cfg
+   	configured module search path = ['/home/spa/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+   	ansible python module location = /usr/lib/python3/dist-packages/ansible
+  	ansible collection location = /home/spa/.ansible/collections:/usr/share/ansible/collections
+   	executable location = /usr/bin/ansible
+   	python version = 3.10.6 (main, Mar 10 2023, 10:55:28) [GCC 11.3.0] (/usr/bin/python3)
+  	jinja version = 3.0.3
+   	libyaml = True 
 ```
 3. Создал директори проекта, создал вагрантфайл с конфигурацией виртаульной машины, файл добавлен в репозиторию.  
-   Поднял виртуальную машину, проверил настройки ssh подключения машины.
+   Поднял виртуальную машину, проверил настройки ssh подключения машины.  
+   
 ```   vagrant ssh-config
       Host nginx
       HostName 127.0.0.1
@@ -42,24 +43,25 @@
       IdentityFile /home/spa/Ass/.vagrant/machines/nginx/virtualbox/private_key
       IdentitiesOnly yes
       LogLevel FATAL
+      
   ```    
    На основе этой информации и информации указанной в вагрнат файле создал inventory файл.   
 5. В директории проекта создал inventory файл, в которой внес информацию о хосте, который буду конфигурировать при помощи Ansible
-   ```[nginx]
+  ``` [nginx]
       nginx ansible_host=192.168.56.10
       [nginx:vars]
       ansible_user=vagrant
       ansible_ssh_private_key_file=/home/spa/Ass/.vagrant/machines/nginx/virtualbox/private_key
-    ```    
+   ```    
 6. В директороий проекта создал ansible.cfg.
-   ```[defaults]
+  ``` [defaults]
       inventory = ./inventory
       remote_user = vagrant
       host_key_checking = False
       retry_files_enabled = False
    ```     
 7. Проверил доступность виртуальной машины.
-  ```spa@stnd:~/Ass$ ansible nginx -m ping
+ ```  spa@stnd:~/Ass$ ansible nginx -m ping
       nginx | SUCCESS => {
      "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python"
@@ -68,8 +70,8 @@
      "ping": "pong"
    }
    ```
-8. Выполнил Ad-Hoc команду для проверки работы Ansible.
-```spa@stnd:~/Ass$ ansible nginx -m command -a "uname -r"
+8. Выполнил Ad-Hoc команду для проверки работы Ansible.  
+``` spa@stnd:~/Ass$ ansible nginx -m command -a "uname -r"
     nginx | CHANGED | rc=0 >>
     3.10.0-1127.el7.x86_64
 ```
