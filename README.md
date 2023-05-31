@@ -16,18 +16,20 @@
 
 1. Рабочий стенд для выполнения занадания физическая машина с Ubuntu 22.04, в ней виртаульная машина виртуал бокс, развернутая через Vagrant.
 2. Поготовка рабочего стенда, проверил наличие и версию Python, установил и проверил версию Ansible.
-```	spa@stnd:~/Ass$ python3 --version
-  	Python 3.10.6
-   	spa@stnd:~/Ass$ ansible --version
-   	ansible [core 2.14.6]
-   	config file = /home/spa/Ass/ansible.cfg
-   	configured module search path = ['/home/spa/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
-   	ansible python module location = /usr/lib/python3/dist-packages/ansible
-  	ansible collection location = /home/spa/.ansible/collections:/usr/share/ansible/collections
-   	executable location = /usr/bin/ansible
-   	python version = 3.10.6 (main, Mar 10 2023, 10:55:28) [GCC 11.3.0] (/usr/bin/python3)
-  	jinja version = 3.0.3
-   	libyaml = True 
+```	
+spa@stnd:~/Ass$ python3 --version
+Python 3.10.6
+
+spa@stnd:~/Ass$ ansible --version
+ansible [core 2.14.6]
+config file = /home/spa/Ass/ansible.cfg
+configured module search path = ['/home/spa/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+ansible python module location = /usr/lib/python3/dist-packages/ansible
+ansible collection location = /home/spa/.ansible/collections:/usr/share/ansible/collections
+executable location = /usr/bin/ansible
+python version = 3.10.6 (main, Mar 10 2023, 10:55:28) [GCC 11.3.0] (/usr/bin/python3)
+jinja version = 3.0.3
+libyaml = True 
 ```
 3. Создал директори проекта, создал вагрантфайл с конфигурацией виртаульной машины, файл добавлен в репозиторию.  
    Поднял виртуальную машину, проверил настройки ssh подключения машины.  
